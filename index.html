@@ -95,6 +95,24 @@
     line-height:1.55;
   }
 
+  .lang-toggle{
+    position:absolute;
+    top:calc(env(safe-area-inset-top, 0px) + 20px);
+    right:20px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.4);
+    color:#fff;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    padding:7px 13px;
+    border-radius:999px;
+    cursor:pointer;
+    z-index:5;
+  }
+  .lang-toggle:active{ background:rgba(255,255,255,0.24); }
+
   /* ---------- Top-level page switcher ---------- */
   .page-switch{
     position:sticky;
@@ -519,55 +537,56 @@
 <body>
 
 <header class="hero">
-  <div class="eyebrow">掼蛋 · Partnership Card Game</div>
-  <h1>Guandan</h1>
-  <p class="dek">Two decks, four players, two partnerships — race your team from level 2 to Ace by finishing hands first.</p>
+  <button class="lang-toggle" id="langToggle">中文</button>
+  <div class="eyebrow" data-i18n="eyebrow">掼蛋 · Partnership Card Game</div>
+  <h1 data-i18n="title">Guandan</h1>
+  <p class="dek" data-i18n="dek">Two decks, four players, two partnerships — race your team from level 2 to Ace by finishing hands first.</p>
 </header>
 
 <nav class="page-switch" id="pageSwitch">
-  <button class="page-btn active" data-page="rules">Rules</button>
-  <button class="page-btn" data-page="tracker">Tracker</button>
+  <button class="page-btn active" data-page="rules" data-i18n="nav-rules">Rules</button>
+  <button class="page-btn" data-page="tracker" data-i18n="nav-tracker">Tracker</button>
 </nav>
 
 <div id="page-rules" class="page active">
 
   <nav class="tabs" id="tabs">
-    <a href="#overview" class="active">Overview</a>
-    <a href="#ranking">Ranking</a>
-    <a href="#combos">Combos</a>
-    <a href="#tribute">Tribute</a>
-    <a href="#play">Playing</a>
-    <a href="#scoring">Scoring</a>
+    <a href="#overview" class="active" data-i18n="tab-overview">Overview</a>
+    <a href="#ranking" data-i18n="tab-ranking">Ranking</a>
+    <a href="#combos" data-i18n="tab-combos">Combos</a>
+    <a href="#tribute" data-i18n="tab-tribute">Tribute</a>
+    <a href="#play" data-i18n="tab-play">Playing</a>
+    <a href="#scoring" data-i18n="tab-scoring">Scoring</a>
   </nav>
 
   <div class="content">
 
     <section id="overview">
-      <div class="section-tag">01 — Setup</div>
-      <h2>Overview</h2>
-      <p class="intro">Guandan ("throwing eggs") is played by four people in two fixed partnerships, partners seated across from one another. The whole deck is dealt out, and the aim is simple: empty your hand before your opponents do.</p>
+      <div class="section-tag" data-i18n="tag-overview">01 — Setup</div>
+      <h2 data-i18n="h2-overview">Overview</h2>
+      <p class="intro" data-i18n="intro-overview">Guandan ("throwing eggs") is played by four people in two fixed partnerships, partners seated across from one another. The whole deck is dealt out, and the aim is simple: empty your hand before your opponents do.</p>
 
       <div class="card">
-        <h3>Players & Teams</h3>
-        <p>4 players, 2 teams of 2. Partners sit opposite each other at the table.</p>
+        <h3 data-i18n="card1-h3">Players & Teams</h3>
+        <p data-i18n="card1-p">4 players, 2 teams of 2. Partners sit opposite each other at the table.</p>
       </div>
       <div class="card">
-        <h3>The Deck</h3>
-        <p>Two standard 54-card decks (with jokers) combined — 108 cards total, dealt entirely so each player holds 27.</p>
+        <h3 data-i18n="card2-h3">The Deck</h3>
+        <p data-i18n="card2-p">Two standard 54-card decks (with jokers) combined — 108 cards total, dealt entirely so each player holds 27.</p>
       </div>
       <div class="card">
-        <h3>The Goal</h3>
-        <p>Be the first team to climb every level, from 2 up to Ace, and then win the deciding hand at Ace level.</p>
+        <h3 data-i18n="card3-h3">The Goal</h3>
+        <p data-i18n="card3-p">Be the first team to climb every level, from 2 up to Ace, and then win the deciding hand at Ace level.</p>
       </div>
     </section>
 
     <section id="ranking">
-      <div class="section-tag">02 — Card Ranking</div>
-      <h2>Ranking & the Level Card</h2>
-      <p class="intro">Cards mostly rank in standard order, but each hand has one wild rank — your team's current level — and the jokers always sit on top.</p>
+      <div class="section-tag" data-i18n="tag-ranking">02 — Card Ranking</div>
+      <h2 data-i18n="h2-ranking">Ranking & the Level Card</h2>
+      <p class="intro" data-i18n="intro-ranking">Cards mostly rank in standard order, but each hand has one wild rank — your team's current level — and the jokers always sit on top.</p>
 
       <div class="track-wrap">
-        <div class="track-label">Rank order, low → high</div>
+        <div class="track-label" data-i18n="ranking-track-label">Rank order, low → high</div>
         <div class="track">
           <div class="tile">2</div>
           <div class="tile">3</div>
@@ -582,118 +601,118 @@
           <div class="tile">Q</div>
           <div class="tile">K</div>
           <div class="tile">A</div>
-          <div class="tile joker">Small<br>Joker</div>
-          <div class="tile joker">Big<br>Joker</div>
+          <div class="tile joker" data-i18n="tile-small-joker">Small<br>Joker</div>
+          <div class="tile joker" data-i18n="tile-big-joker">Big<br>Joker</div>
         </div>
-        <div class="track-note"><b>The level card</b> is whatever rank your team is currently on — shown here as 5. Every hand, all four copies of that rank become wild, ranking just under the jokers. As your team advances, the wild rank moves up the track.</div>
+        <div class="track-note" data-i18n="ranking-track-note"><b>The level card</b> is whatever rank your team is currently on — shown here as 5. Every hand, all four copies of that rank become wild, ranking just under the jokers. As your team advances, the wild rank moves up the track.</div>
       </div>
 
-      <div class="callout"><b>Jokers</b> are always the two highest cards in the game — Small Joker, then Big Joker above it — regardless of level.</div>
+      <div class="callout" data-i18n="ranking-callout"><b>Jokers</b> are always the two highest cards in the game — Small Joker, then Big Joker above it — regardless of level.</div>
     </section>
 
     <section id="combos">
-      <div class="section-tag">03 — Legal Plays</div>
-      <h2>Combinations</h2>
-      <p class="intro">Every play must be one of these shapes. To beat the previous play, you need a higher combo of the <i>same</i> shape — except bombs, which can land on anything.</p>
+      <div class="section-tag" data-i18n="tag-combos">03 — Legal Plays</div>
+      <h2 data-i18n="h2-combos">Combinations</h2>
+      <p class="intro" data-i18n="intro-combos">Every play must be one of these shapes. To beat the previous play, you need a higher combo of the <i>same</i> shape — except bombs, which can land on anything.</p>
 
       <table class="combos">
-        <tr><th>Combo</th><th>Description</th><th>Example</th></tr>
-        <tr><td>Single</td><td>One card</td><td class="example">9</td></tr>
-        <tr><td>Pair</td><td>Two of the same rank</td><td class="example">9-9</td></tr>
-        <tr><td>Triple</td><td>Three of the same rank</td><td class="example">9-9-9</td></tr>
-        <tr><td>Full House</td><td>Triple + pair</td><td class="example">9-9-9-3-3</td></tr>
-        <tr><td>Straight</td><td>5 or more consecutive singles</td><td class="example">5-6-7-8-9</td></tr>
-        <tr><td>Tube</td><td>3 or more consecutive pairs</td><td class="example">5-5-6-6-7-7</td></tr>
-        <tr><td>Plate</td><td>2 or more consecutive triples</td><td class="example">5-5-5-6-6-6</td></tr>
-        <tr class="bomb-row"><td>Bomb<span class="bomb-badge">Beats all</span></td><td>4 or more of the same rank</td><td class="example">9-9-9-9</td></tr>
-        <tr class="bomb-row"><td>Joker Bomb<span class="bomb-badge">Highest</span></td><td>Both jokers from both decks</td><td class="example">🃏🃏🃏🃏</td></tr>
+        <tr><th data-i18n="th-combo">Combo</th><th data-i18n="th-description">Description</th><th data-i18n="th-example">Example</th></tr>
+        <tr><td data-i18n="row-single-name">Single</td><td data-i18n="row-single-desc">One card</td><td class="example">9</td></tr>
+        <tr><td data-i18n="row-pair-name">Pair</td><td data-i18n="row-pair-desc">Two of the same rank</td><td class="example">9-9</td></tr>
+        <tr><td data-i18n="row-triple-name">Triple</td><td data-i18n="row-triple-desc">Three of the same rank</td><td class="example">9-9-9</td></tr>
+        <tr><td data-i18n="row-fullhouse-name">Full House</td><td data-i18n="row-fullhouse-desc">Triple + pair</td><td class="example">9-9-9-3-3</td></tr>
+        <tr><td data-i18n="row-straight-name">Straight</td><td data-i18n="row-straight-desc">5 or more consecutive singles</td><td class="example">5-6-7-8-9</td></tr>
+        <tr><td data-i18n="row-tube-name">Tube</td><td data-i18n="row-tube-desc">3 or more consecutive pairs</td><td class="example">5-5-6-6-7-7</td></tr>
+        <tr><td data-i18n="row-plate-name">Plate</td><td data-i18n="row-plate-desc">2 or more consecutive triples</td><td class="example">5-5-5-6-6-6</td></tr>
+        <tr class="bomb-row"><td><span data-i18n="row-bomb-name">Bomb</span><span class="bomb-badge" data-i18n="badge-beatsall">Beats all</span></td><td data-i18n="row-bomb-desc">4 or more of the same rank</td><td class="example">9-9-9-9</td></tr>
+        <tr class="bomb-row"><td><span data-i18n="row-jokerbomb-name">Joker Bomb</span><span class="bomb-badge" data-i18n="badge-highest">Highest</span></td><td data-i18n="row-jokerbomb-desc">Both jokers from both decks</td><td class="example">🃏🃏🃏🃏</td></tr>
       </table>
 
-      <div class="callout">A <b>bomb</b> can be played on top of any combo, of any shape, at any time — it's the one way to break another player's control of a trick. Bigger bombs beat smaller bombs, and the joker bomb beats everything.</div>
+      <div class="callout" data-i18n="combos-callout">A <b>bomb</b> can be played on top of any combo, of any shape, at any time — it's the one way to break another player's control of a trick. Bigger bombs beat smaller bombs, and the joker bomb beats everything.</div>
     </section>
 
     <section id="tribute">
-      <div class="section-tag">04 — Before the Hand</div>
-      <h2>Tribute</h2>
-      <p class="intro">How the previous hand ended decides who owes tribute before the next one begins.</p>
+      <div class="section-tag" data-i18n="tag-tribute">04 — Before the Hand</div>
+      <h2 data-i18n="h2-tribute">Tribute</h2>
+      <p class="intro" data-i18n="intro-tribute">How the previous hand ended decides who owes tribute before the next one begins.</p>
 
       <div class="flow">
         <div class="flow-step">
           <div class="num">1</div>
-          <div class="body"><h3>Double-down finish</h3><p>If one team's players finished 1st and 2nd, both losing players must each hand over their single highest card to the winning team.</p></div>
+          <div class="body"><h3 data-i18n="trib-step1-h3">Double-down finish</h3><p data-i18n="trib-step1-p">If one team's players finished 1st and 2nd, both losing players must each hand over their single highest card to the winning team.</p></div>
         </div>
         <div class="flow-connector"></div>
         <div class="flow-step">
           <div class="num">2</div>
-          <div class="body"><h3>Return cards</h3><p>In exchange, the winning players give back their lowest non-wild cards, so nobody loses cards on net.</p></div>
+          <div class="body"><h3 data-i18n="trib-step2-h3">Return cards</h3><p data-i18n="trib-step2-p">In exchange, the winning players give back their lowest non-wild cards, so nobody loses cards on net.</p></div>
         </div>
         <div class="flow-connector"></div>
         <div class="flow-step">
           <div class="num">3</div>
-          <div class="body"><h3>Anti-tribute</h3><p>If the two losing players together hold both jokers, they may refuse to pay tribute at all.</p></div>
+          <div class="body"><h3 data-i18n="trib-step3-h3">Anti-tribute</h3><p data-i18n="trib-step3-p">If the two losing players together hold both jokers, they may refuse to pay tribute at all.</p></div>
         </div>
         <div class="flow-connector"></div>
         <div class="flow-step">
           <div class="num">4</div>
-          <div class="body"><h3>Who leads</h3><p>Whoever owes the largest tribute typically leads the first trick of the new hand.</p></div>
+          <div class="body"><h3 data-i18n="trib-step4-h3">Who leads</h3><p data-i18n="trib-step4-p">Whoever owes the largest tribute typically leads the first trick of the new hand.</p></div>
         </div>
       </div>
     </section>
 
     <section id="play">
-      <div class="section-tag">05 — During the Hand</div>
-      <h2>Playing a Hand</h2>
-      <p class="intro">Play moves around the table in turns, each player either beating the last combo or passing.</p>
+      <div class="section-tag" data-i18n="tag-play">05 — During the Hand</div>
+      <h2 data-i18n="h2-play">Playing a Hand</h2>
+      <p class="intro" data-i18n="intro-play">Play moves around the table in turns, each player either beating the last combo or passing.</p>
 
       <div class="flow">
         <div class="flow-step">
           <div class="num">1</div>
-          <div class="body"><h3>Lead</h3><p>The designated player opens the trick with any legal combo.</p></div>
+          <div class="body"><h3 data-i18n="play-step1-h3">Lead</h3><p data-i18n="play-step1-p">The designated player opens the trick with any legal combo.</p></div>
         </div>
         <div class="flow-connector"></div>
         <div class="flow-step">
           <div class="num">2</div>
-          <div class="body"><h3>Respond</h3><p>Each player in turn plays a higher combo of the same shape, drops a bomb, or passes.</p></div>
+          <div class="body"><h3 data-i18n="play-step2-h3">Respond</h3><p data-i18n="play-step2-p">Each player in turn plays a higher combo of the same shape, drops a bomb, or passes.</p></div>
         </div>
         <div class="flow-connector"></div>
         <div class="flow-step">
           <div class="num">3</div>
-          <div class="body"><h3>Trick ends</h3><p>Once everyone else passes, the last player to have played wins the trick and leads the next one, with any combo they choose.</p></div>
+          <div class="body"><h3 data-i18n="play-step3-h3">Trick ends</h3><p data-i18n="play-step3-p">Once everyone else passes, the last player to have played wins the trick and leads the next one, with any combo they choose.</p></div>
         </div>
         <div class="flow-connector"></div>
         <div class="flow-step">
           <div class="num">4</div>
-          <div class="body"><h3>Finishing</h3><p>A player who empties their hand locks in their finish position and sits out for the rest of the hand.</p></div>
+          <div class="body"><h3 data-i18n="play-step4-h3">Finishing</h3><p data-i18n="play-step4-p">A player who empties their hand locks in their finish position and sits out for the rest of the hand.</p></div>
         </div>
         <div class="flow-connector"></div>
         <div class="flow-step">
           <div class="num">5</div>
-          <div class="body"><h3>Hand ends</h3><p>Once three players have finished, the fourth is automatically last place and the hand is over.</p></div>
+          <div class="body"><h3 data-i18n="play-step5-h3">Hand ends</h3><p data-i18n="play-step5-p">Once three players have finished, the fourth is automatically last place and the hand is over.</p></div>
         </div>
       </div>
     </section>
 
     <section id="scoring">
-      <div class="section-tag">06 — Advancing</div>
-      <h2>Scoring & Levels</h2>
-      <p class="intro">Your team's level gain depends entirely on where <i>your two players</i> land in the finishing order.</p>
+      <div class="section-tag" data-i18n="tag-scoring">06 — Advancing</div>
+      <h2 data-i18n="h2-scoring">Scoring & Levels</h2>
+      <p class="intro" data-i18n="intro-scoring">Your team's level gain depends entirely on where <i>your two players</i> land in the finishing order.</p>
 
       <div class="score-grid">
         <div class="score-card top">
-          <div class="finish">1st + 2nd<small>Double down</small></div>
-          <div class="levels">+3 <span>levels</span></div>
+          <div class="finish"><span data-i18n="score1-finish">1st + 2nd</span><small data-i18n="score1-sub">Double down</small></div>
+          <div class="levels" data-i18n="score1-levels">+3 <span>levels</span></div>
         </div>
         <div class="score-card">
-          <div class="finish">1st + 3rd<small>Standard win</small></div>
-          <div class="levels">+2 <span>levels</span></div>
+          <div class="finish"><span data-i18n="score2-finish">1st + 3rd</span><small data-i18n="score2-sub">Standard win</small></div>
+          <div class="levels" data-i18n="score2-levels">+2 <span>levels</span></div>
         </div>
         <div class="score-card">
-          <div class="finish">1st + 4th<small>Narrow win</small></div>
-          <div class="levels">+1 <span>level</span></div>
+          <div class="finish"><span data-i18n="score3-finish">1st + 4th</span><small data-i18n="score3-sub">Narrow win</small></div>
+          <div class="levels" data-i18n="score3-levels">+1 <span>level</span></div>
         </div>
       </div>
 
-      <div class="callout">The first team to reach <b>Ace level</b> and win that final hand wins the entire game.</div>
+      <div class="callout" data-i18n="scoring-callout">The first team to reach <b>Ace level</b> and win that final hand wins the entire game.</div>
     </section>
 
   </div>
@@ -703,14 +722,14 @@
   <div class="content">
 
     <section id="tracker">
-      <div class="section-tag">00 — Live State</div>
-      <h2>Game Tracker</h2>
-      <p class="intro">Name your teams and track where everyone stands. Tap a tile to jump straight to a level, or use the +/- buttons. Saved automatically on this device.</p>
+      <div class="section-tag" data-i18n="tag-tracker">00 — Live State</div>
+      <h2 data-i18n="h2-tracker">Game Tracker</h2>
+      <p class="intro" data-i18n="intro-tracker">Name your teams and track where everyone stands. Tap a tile to jump straight to a level, or use the +/- buttons. Saved automatically on this device.</p>
 
       <div class="tracker-card" id="cardTeamA">
         <input class="team-name-input" id="teamAName" maxlength="24" value="Team A" autocomplete="off">
         <div class="track-wrap">
-          <div class="track-label">Current Level</div>
+          <div class="track-label" data-i18n="tracker-current-level">Current Level</div>
           <div class="track" id="teamATrack"></div>
         </div>
         <div class="stepper">
@@ -723,7 +742,7 @@
       <div class="tracker-card" id="cardTeamB">
         <input class="team-name-input" id="teamBName" maxlength="24" value="Team B" autocomplete="off">
         <div class="track-wrap">
-          <div class="track-label">Current Level</div>
+          <div class="track-label" data-i18n="tracker-current-level">Current Level</div>
           <div class="track" id="teamBTrack"></div>
         </div>
         <div class="stepper">
@@ -734,7 +753,7 @@
       </div>
 
       <div class="tracker-card hand-card">
-        <div class="tracker-card-title">This Hand Is Being Played At</div>
+        <div class="tracker-card-title" data-i18n="tracker-hand-title">This Hand Is Being Played At</div>
         <div class="track-wrap">
           <div class="track" id="handTrack"></div>
         </div>
@@ -746,15 +765,15 @@
       </div>
 
       <div class="tracker-actions">
-        <button class="reset-btn" id="resetTracker">Reset Tracker</button>
+        <button class="reset-btn" id="resetTracker" data-i18n="tracker-reset-btn">Reset Tracker</button>
       </div>
-      <div class="save-hint">Saved locally in this browser</div>
+      <div class="save-hint" data-i18n="tracker-save-hint">Saved locally in this browser</div>
     </section>
 
   </div>
 </div>
 
-<footer>Guandan Rules Reference · for quick lookup at the table</footer>
+<footer data-i18n="footer-text">Guandan Rules Reference · for quick lookup at the table</footer>
 
 <script>
   // Scroll-spy for the sticky tab nav (Rules page only)
@@ -790,6 +809,147 @@
       window.scrollTo({ top: 0 });
     });
   });
+
+  // ---------- Bilingual toggle (EN / 简体中文) ----------
+  const ZH = {
+    'eyebrow': '掼蛋 · 团队纸牌游戏',
+    'title': '掼蛋',
+    'dek': '两副扑克牌,四位玩家,两对搭档——率先出完手牌,带领你的团队从2级冲到A级。',
+
+    'nav-rules': '规则',
+    'nav-tracker': '计分板',
+
+    'tab-overview': '概述',
+    'tab-ranking': '牌序',
+    'tab-combos': '牌型',
+    'tab-tribute': '进贡',
+    'tab-play': '出牌',
+    'tab-scoring': '计分',
+
+    'tag-overview': '01 — 准备',
+    'h2-overview': '概述',
+    'intro-overview': '掼蛋(意为"扔鸡蛋")由四人分成两对固定搭档进行,搭档相对而坐。所有牌一次性发完,目标很简单:抢先出完手中的牌。',
+    'card1-h3': '玩家与团队',
+    'card1-p': '4名玩家,分成2个团队,每队2人。搭档在桌上相对而坐。',
+    'card2-h3': '牌组',
+    'card2-p': '两副标准54张扑克牌(含大小王)合并使用,共108张牌,一次性发完,每人27张。',
+    'card3-h3': '目标',
+    'card3-p': '率先带领团队从2级一路升到A级,并在A级的关键一局中获胜,即可赢得整场比赛。',
+
+    'tag-ranking': '02 — 牌序',
+    'h2-ranking': '牌序与级牌',
+    'intro-ranking': '牌的大小基本按常规顺序排列,但每局都有一个百搭的等级——也就是你所在队伍当前的级数——大小王则始终排在最顶端。',
+    'ranking-track-label': '牌序,从小到大',
+    'tile-small-joker': '小王',
+    'tile-big-joker': '大王',
+    'ranking-track-note': '<b>级牌</b>就是你的队伍当前所在的级数——此处以5为例。每一局中,该点数的所有四张牌都成为百搭牌,大小仅次于大小王。随着队伍升级,百搭的点数也会随之提升。',
+    'ranking-callout': '<b>大小王</b>永远是场上最大的两张牌——小王大于普通牌,大王又大于小王——无论当前是几级都是如此。',
+
+    'tag-combos': '03 — 合法牌型',
+    'h2-combos': '牌型',
+    'intro-combos': '每次出牌都必须符合以下某种牌型。要压过上家,你需要出<i>同种牌型</i>中更大的牌——炸弹除外,炸弹可以压制任何牌型。',
+    'th-combo': '牌型',
+    'th-description': '说明',
+    'th-example': '示例',
+    'row-single-name': '单张',
+    'row-single-desc': '一张牌',
+    'row-pair-name': '对子',
+    'row-pair-desc': '两张点数相同的牌',
+    'row-triple-name': '三张',
+    'row-triple-desc': '三张点数相同的牌',
+    'row-fullhouse-name': '三带二',
+    'row-fullhouse-desc': '三张 + 一对',
+    'row-straight-name': '顺子',
+    'row-straight-desc': '5张或以上连续单牌',
+    'row-tube-name': '连对',
+    'row-tube-desc': '3组或以上连续对子',
+    'row-plate-name': '钢板',
+    'row-plate-desc': '2组或以上连续三张',
+    'row-bomb-name': '炸弹',
+    'badge-beatsall': '无敌',
+    'row-bomb-desc': '4张或以上点数相同的牌',
+    'row-jokerbomb-name': '王炸',
+    'badge-highest': '最大',
+    'row-jokerbomb-desc': '两副牌中的全部大小王',
+    'combos-callout': '<b>炸弹</b>可以在任何时候压过任意牌型的牌——这是打破对方控场的唯一方式。更大的炸弹可以压过更小的炸弹,而王炸可以压过所有牌。',
+
+    'tag-tribute': '04 — 局前流程',
+    'h2-tribute': '进贡',
+    'intro-tribute': '上一局的结束方式,决定了下一局开始前谁需要进贡。',
+    'trib-step1-h3': '双下',
+    'trib-step1-p': '如果一方队伍的两名玩家分别获得第一和第二名(双下),失败方的两名玩家必须各自将手中最大的一张牌交给获胜方。',
+    'trib-step2-h3': '还贡',
+    'trib-step2-p': '作为交换,获胜方会各自回送一张最小的非百搭牌,确保双方牌数不变。',
+    'trib-step3-h3': '抗贡',
+    'trib-step3-p': '如果失败方两人手中合计持有大小王,他们可以拒绝进贡。',
+    'trib-step4-h3': '谁先出牌',
+    'trib-step4-p': '通常由进贡最大的一方,在新一局中率先出牌。',
+
+    'tag-play': '05 — 出牌过程',
+    'h2-play': '出牌流程',
+    'intro-play': '出牌按顺序绕桌进行,每位玩家要么出牌压过上家,要么选择过牌。',
+    'play-step1-h3': '首出',
+    'play-step1-p': '指定的玩家可以用任意合法牌型开启本轮。',
+    'play-step2-h3': '跟牌',
+    'play-step2-p': '其余玩家依次出同牌型中更大的牌、出炸弹,或选择过牌。',
+    'play-step3-h3': '本轮结束',
+    'play-step3-p': '当其余所有人都选择过牌后,最后出牌的玩家赢得本轮,并可用任意牌型开启下一轮。',
+    'play-step4-h3': '出完牌',
+    'play-step4-p': '出完手牌的玩家将锁定自己的名次,并在本局剩余时间里不再参与出牌。',
+    'play-step5-h3': '本局结束',
+    'play-step5-p': '当三位玩家都已出完牌,第四位玩家自动成为末游,本局结束。',
+
+    'tag-scoring': '06 — 升级规则',
+    'h2-scoring': '计分与升级',
+    'intro-scoring': '你的队伍能升多少级,完全取决于<i>你们两人</i>的名次组合。',
+    'score1-finish': '第一 + 第二',
+    'score1-sub': '双下',
+    'score1-levels': '+3 <span>级</span>',
+    'score2-finish': '第一 + 第三',
+    'score2-sub': '普通胜利',
+    'score2-levels': '+2 <span>级</span>',
+    'score3-finish': '第一 + 第四',
+    'score3-sub': '险胜',
+    'score3-levels': '+1 <span>级</span>',
+    'scoring-callout': '率先达到<b>A级</b>并赢下那关键一局的队伍,即赢得整场比赛。',
+
+    'tag-tracker': '00 — 实时状态',
+    'h2-tracker': '游戏计分板',
+    'intro-tracker': '为你的队伍命名,并追踪双方的进度。点击牌块可直接跳转到对应级数,也可以使用加减按钮调整。数据会自动保存在本设备上。',
+    'tracker-current-level': '当前级数',
+    'tracker-hand-title': '本局游戏级数',
+    'tracker-reset-btn': '重置追踪器',
+    'tracker-save-hint': '数据保存在本浏览器中',
+
+    'footer-text': '掼蛋规则速查 · 牌桌旁快速查阅'
+  };
+
+  const LANG_STORAGE_KEY = 'guandan-lang';
+  let currentLang = 'en';
+  const i18nEls = document.querySelectorAll('[data-i18n]');
+  const originalHTML = new Map();
+  i18nEls.forEach(el => originalHTML.set(el, el.innerHTML));
+
+  function applyLang(lang) {
+    currentLang = lang;
+    i18nEls.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      el.innerHTML = (lang === 'zh' && ZH[key]) ? ZH[key] : originalHTML.get(el);
+    });
+    document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : 'en';
+    const toggleBtn = document.getElementById('langToggle');
+    if (toggleBtn) toggleBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+    try { localStorage.setItem(LANG_STORAGE_KEY, lang); } catch (e) { /* ignore */ }
+  }
+
+  document.getElementById('langToggle').addEventListener('click', () => {
+    applyLang(currentLang === 'en' ? 'zh' : 'en');
+  });
+
+  try {
+    const savedLang = localStorage.getItem(LANG_STORAGE_KEY);
+    if (savedLang === 'zh') applyLang('zh');
+  } catch (e) { /* ignore */ }
 
   // ---------- Game Tracker ----------
   const LEVELS = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
@@ -884,7 +1044,10 @@
   });
 
   document.getElementById('resetTracker').addEventListener('click', () => {
-    if (confirm('Reset team names and levels back to the start?')) {
+    const msg = currentLang === 'zh'
+      ? '确定要将队伍名称和级数重置为初始状态吗?'
+      : 'Reset team names and levels back to the start?';
+    if (confirm(msg)) {
       state = { ...defaultState };
       renderAll();
     }
