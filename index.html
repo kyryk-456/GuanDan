@@ -158,18 +158,20 @@
     position:sticky;
     top:48px;
     z-index:40;
+    background:var(--jade);
+    box-shadow:0 4px 14px rgba(0,0,0,0.12);
+  }
+  .tabs-inner{
     display:flex;
     gap:2px;
     max-width:640px;
     margin:0 auto;
     overflow-x:auto;
-    background:var(--jade);
     padding:0 10px;
-    box-shadow:0 4px 14px rgba(0,0,0,0.12);
     -ms-overflow-style:none;
     scrollbar-width:none;
   }
-  nav.tabs::-webkit-scrollbar{display:none;}
+  .tabs-inner::-webkit-scrollbar{display:none;}
   nav.tabs a{
     flex:0 0 auto;
     color:#BFD2CB;
@@ -189,7 +191,7 @@
 
   /* ---------- Wider screens: let the shared column breathe a little more ---------- */
   @media (min-width:900px){
-    .hero-inner, .switch-inner, nav.tabs, .content{ max-width:760px; }
+    .hero-inner, .switch-inner, .tabs-inner, .content{ max-width:760px; }
     header.hero{ padding-top:calc(env(safe-area-inset-top, 0px) + 40px); padding-bottom:44px; }
     header.hero h1{ font-size:50px; }
   }
@@ -573,13 +575,15 @@
 <div id="page-rules" class="page active">
 
   <nav class="tabs" id="tabs">
-    <a href="#overview" class="active" data-i18n="tab-overview">Overview</a>
-    <a href="#dealing" data-i18n="tab-dealing">Dealing</a>
-    <a href="#ranking" data-i18n="tab-ranking">Ranking</a>
-    <a href="#combos" data-i18n="tab-combos">Combos</a>
-    <a href="#tribute" data-i18n="tab-tribute">Tribute</a>
-    <a href="#play" data-i18n="tab-play">Playing</a>
-    <a href="#scoring" data-i18n="tab-scoring">Scoring</a>
+    <div class="tabs-inner">
+      <a href="#overview" class="active" data-i18n="tab-overview">Overview</a>
+      <a href="#dealing" data-i18n="tab-dealing">Dealing</a>
+      <a href="#ranking" data-i18n="tab-ranking">Ranking</a>
+      <a href="#combos" data-i18n="tab-combos">Combos</a>
+      <a href="#tribute" data-i18n="tab-tribute">Tribute</a>
+      <a href="#play" data-i18n="tab-play">Playing</a>
+      <a href="#scoring" data-i18n="tab-scoring">Scoring</a>
+    </div>
   </nav>
 
   <div class="content">
