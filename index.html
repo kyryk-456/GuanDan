@@ -604,8 +604,10 @@
           <div class="tile joker" data-i18n="tile-small-joker">Small<br>Joker</div>
           <div class="tile joker" data-i18n="tile-big-joker">Big<br>Joker</div>
         </div>
-        <div class="track-note" data-i18n="ranking-track-note"><b>The level card</b> is whatever rank your team is currently on — shown here as 5. Every hand, all four copies of that rank become wild, ranking just under the jokers. As your team advances, the wild rank moves up the track.</div>
+        <div class="track-note" data-i18n="ranking-track-note"><b>The level card</b> is whatever rank your team is currently on — shown here as 5. Every hand, all copies of that rank become wild: they rank just under the jokers, and slot into their natural numeric position within straights, tubes, or plates. As your team advances, the wild rank moves up the track.</div>
       </div>
+
+      <div class="callout" data-i18n="ranking-hearts-callout"><b>The Hearts copy is the true wildcard.</b> Of the copies of the level card, the one in Hearts (♥) can stand in for any card, of any rank or suit, to complete whatever hand you're building — the only cards it can't imitate are the two jokers.</div>
 
       <div class="callout" data-i18n="ranking-callout"><b>Jokers</b> are always the two highest cards in the game — Small Joker, then Big Joker above it — regardless of level.</div>
     </section>
@@ -625,10 +627,13 @@
         <tr><td data-i18n="row-tube-name">Tube</td><td data-i18n="row-tube-desc">3 or more consecutive pairs</td><td class="example">5-5-6-6-7-7</td></tr>
         <tr><td data-i18n="row-plate-name">Plate</td><td data-i18n="row-plate-desc">2 or more consecutive triples</td><td class="example">5-5-5-6-6-6</td></tr>
         <tr class="bomb-row"><td><span data-i18n="row-bomb-name">Bomb</span><span class="bomb-badge" data-i18n="badge-beatsall">Beats all</span></td><td data-i18n="row-bomb-desc">4 or more of the same rank</td><td class="example">9-9-9-9</td></tr>
+        <tr class="bomb-row"><td><span data-i18n="row-flush-name">Straight Flush</span><span class="bomb-badge" data-i18n="badge-bombtier">Bomb</span></td><td data-i18n="row-flush-desc">5 consecutive cards, all the same suit</td><td class="example">9-10-J-Q-K ♠</td></tr>
         <tr class="bomb-row"><td><span data-i18n="row-jokerbomb-name">Joker Bomb</span><span class="bomb-badge" data-i18n="badge-highest">Highest</span></td><td data-i18n="row-jokerbomb-desc">Both jokers from both decks</td><td class="example">🃏🃏🃏🃏</td></tr>
       </table>
 
       <div class="callout" data-i18n="combos-callout">A <b>bomb</b> can be played on top of any combo, of any shape, at any time — it's the one way to break another player's control of a trick. Bigger bombs beat smaller bombs, and the joker bomb beats everything.</div>
+
+      <div class="callout" data-i18n="combos-flush-callout"><b>Where the straight flush sits:</b> it beats an ordinary bomb of 4 or 5 cards, but a bomb of 6 or more cards beats it. Full order, low to high: 4-card bomb → 5-card bomb → straight flush → 6-card-or-larger bomb → joker bomb.</div>
     </section>
 
     <section id="tribute">
@@ -842,7 +847,8 @@
     'ranking-track-label': '牌序,从小到大',
     'tile-small-joker': '小王',
     'tile-big-joker': '大王',
-    'ranking-track-note': '<b>级牌</b>就是你的队伍当前所在的级数——此处以5为例。每一局中,该点数的所有四张牌都成为百搭牌,大小仅次于大小王。随着队伍升级,百搭的点数也会随之提升。',
+    'ranking-track-note': '<b>级牌</b>就是你的队伍当前所在的级数——此处以5为例。每一局中,该点数的所有牌都成为百搭牌:大小仅次于大小王,并可按其点数嵌入顺子、连对或钢板中的相应位置。随着队伍升级,百搭的点数也会随之提升。',
+    'ranking-hearts-callout': '<b>红心级牌才是真正的百搭。</b>在所有级牌中,红心(♥)花色的那一张可以代替任意点数、任意花色的牌,拼成你想要的任何牌型——唯一不能替代的只有大小王。',
     'ranking-callout': '<b>大小王</b>永远是场上最大的两张牌——小王大于普通牌,大王又大于小王——无论当前是几级都是如此。',
 
     'tag-combos': '03 — 合法牌型',
@@ -868,10 +874,14 @@
     'row-bomb-name': '炸弹',
     'badge-beatsall': '无敌',
     'row-bomb-desc': '4张或以上点数相同的牌',
+    'row-flush-name': '同花顺',
+    'badge-bombtier': '炸弹',
+    'row-flush-desc': '5张同花色的连续单牌',
     'row-jokerbomb-name': '王炸',
     'badge-highest': '最大',
     'row-jokerbomb-desc': '两副牌中的全部大小王',
     'combos-callout': '<b>炸弹</b>可以在任何时候压过任意牌型的牌——这是打破对方控场的唯一方式。更大的炸弹可以压过更小的炸弹,而王炸可以压过所有牌。',
+    'combos-flush-callout': '<b>同花顺的位置:</b>它能压过4张或5张的普通炸弹,但6张及以上的炸弹能压过它。完整顺序,从小到大:4张炸弹 → 5张炸弹 → 同花顺 → 6张及以上炸弹 → 王炸。',
 
     'tag-tribute': '04 — 局前流程',
     'h2-tribute': '进贡',
