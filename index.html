@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Guandan — Rules Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A clear, complete reference for the rules of Guandan (掼蛋).">
+<meta name="theme-color" content="#1F4B3F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Guandan">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#1C1B18;
+    --ink-soft:#5B5750;
+    --ivory:#EFE7D8;
+    --ivory-card:#F8F3E9;
+    --jade:#1F4B3F;
+    --jade-light:#2F6B57;
+    --jade-pale:#E4EDE9;
+    --lacquer:#A32B1F;
+    --brass:#B8933E;
+    --brass-pale:#E8DCC0;
+    --line:#DCD2BC;
+    --radius:14px;
+    --shadow: 0 1px 2px rgba(28,27,24,0.06), 0 6px 20px rgba(28,27,24,0.05);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Public Sans', system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:56px;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+
+  .mono{ font-family:'JetBrains Mono', monospace; }
+
+  /* ---------- Header ---------- */
+  header.hero{
+    background:
+      radial-gradient(120% 140% at 15% -10%, rgba(184,147,62,0.35), transparent 55%),
+      linear-gradient(160deg, var(--jade) 0%, #163B31 100%);
+    color:var(--ivory-card);
+    padding:calc(env(safe-area-inset-top, 0px) + 28px) 22px 34px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--brass);
+    opacity:0.95;
+  }
+  header.hero h1{
+    font-size:clamp(34px, 9vw, 46px);
+    font-weight:700;
+    color:#fff;
+    margin-top:8px;
+    line-height:1.02;
+  }
+  header.hero h1 span{
+    display:block;
+    font-size:0.42em;
+    font-weight:400;
+    font-style:italic;
+    color:var(--brass-pale);
+    margin-top:6px;
+  }
+  header.hero p.dek{
+    max-width:46ch;
+    margin-top:14px;
+    color:#D9E4DF;
+    font-size:15px;
+    line-height:1.55;
+  }
+
+  /* ---------- Sticky tab nav ---------- */
+  nav.tabs{
+    position:sticky;
+    top:0;
+    z-index:40;
+    display:flex;
+    gap:2px;
+    overflow-x:auto;
+    background:var(--jade);
+    padding:0 10px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.12);
+    -ms-overflow-style:none;
+    scrollbar-width:none;
+  }
+  nav.tabs::-webkit-scrollbar{display:none;}
+  nav.tabs a{
+    flex:0 0 auto;
+    color:#BFD2CB;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    padding:14px 12px 12px;
+    border-bottom:3px solid transparent;
+    white-space:nowrap;
+  }
+  nav.tabs a.active{
+    color:#fff;
+    border-bottom-color:var(--brass);
+  }
+
+  main{ max-width:640px; margin:0 auto; padding:0 18px; }
+
+  section{
+    padding:34px 0 6px;
+    scroll-margin-top:52px;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--lacquer);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .section-tag::before{
+    content:"";
+    width:16px; height:2px;
+    background:var(--lacquer);
+  }
+  section h2{
+    font-size:26px;
+    margin-top:8px;
+    margin-bottom:14px;
+    color:var(--jade);
+  }
+  section > p.intro{
+    color:var(--ink-soft);
+    font-size:15px;
+    line-height:1.6;
+    margin-bottom:18px;
+  }
+
+  .card{
+    background:var(--ivory-card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px 18px;
+    box-shadow:var(--shadow);
+    margin-bottom:14px;
+  }
+  .card h3{
+    font-size:16px;
+    color:var(--jade);
+    margin-bottom:6px;
+  }
+  .card p{ margin:0; font-size:14.5px; line-height:1.55; color:var(--ink); }
+
+  /* ---------- Level Track (signature element) ---------- */
+  .track-wrap{
+    margin:6px 0 20px;
+    padding:18px 6px 16px;
+    background:var(--jade);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .track-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--brass-pale);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:0 14px 10px;
+  }
+  .track{
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+    padding:2px 14px 8px;
+    -ms-overflow-style:none;
+    scrollbar-width:none;
+  }
+  .track::-webkit-scrollbar{ display:none; }
+  .tile{
+    flex:0 0 auto;
+    width:38px; height:52px;
+    border-radius:7px;
+    background:var(--ivory-card);
+    color:var(--jade);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:16px;
+    box-shadow:0 2px 4px rgba(0,0,0,0.25);
+    border-bottom:3px solid var(--brass);
+    position:relative;
+  }
+  .tile.joker{
+    background:var(--lacquer);
+    color:#fff;
+    border-bottom-color:#6e1811;
+    font-size:12px;
+    font-family:'JetBrains Mono',monospace;
+    font-weight:600;
+    text-align:center;
+    line-height:1.2;
+  }
+  .tile.wild::after{
+    content:"lvl";
+    position:absolute;
+    bottom:-16px;
+    left:50%;
+    transform:translateX(-50%);
+    font-family:'JetBrains Mono', monospace;
+    font-size:9px;
+    letter-spacing:0.08em;
+    color:var(--brass-pale);
+    text-transform:uppercase;
+  }
+  .track-note{
+    padding:20px 14px 0;
+    font-size:13px;
+    color:#CBDAD4;
+    line-height:1.55;
+  }
+  .track-note b{ color:#fff; }
+
+  /* ---------- Combo table ---------- */
+  table.combos{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--ivory-card);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    margin-bottom:16px;
+  }
+  table.combos th{
+    text-align:left;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ivory-card);
+    background:var(--jade-light);
+    padding:10px 12px;
+  }
+  table.combos td{
+    padding:11px 12px;
+    font-size:14px;
+    border-top:1px solid var(--line);
+    vertical-align:top;
+  }
+  table.combos td.example{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--lacquer);
+    white-space:nowrap;
+    font-size:13px;
+  }
+  table.combos tr.bomb-row td{ background:var(--brass-pale); }
+
+  .bomb-badge{
+    display:inline-block;
+    background:var(--lacquer);
+    color:#fff;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:2px 7px;
+    border-radius:999px;
+    margin-left:6px;
+    vertical-align:middle;
+  }
+
+  /* ---------- Flow diagram ---------- */
+  .flow{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    margin:6px 0 20px;
+  }
+  .flow-step{
+    display:flex;
+    gap:14px;
+    padding:14px 4px;
+  }
+  .flow-step .num{
+    flex:0 0 auto;
+    width:30px; height:30px;
+    border-radius:50%;
+    background:var(--jade);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    font-weight:600;
+  }
+  .flow-step .body h3{ font-size:15px; margin-bottom:3px; }
+  .flow-step .body p{ font-size:14px; color:var(--ink-soft); line-height:1.5; margin:0; }
+  .flow-connector{
+    width:2px;
+    height:14px;
+    background:var(--line);
+    margin-left:19px;
+  }
+
+  /* ---------- Scoring grid ---------- */
+  .score-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .score-card{
+    background:var(--ivory-card);
+    border:1px solid var(--line);
+    border-left:5px solid var(--brass);
+    border-radius:10px;
+    padding:13px 16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:var(--shadow);
+  }
+  .score-card.top{ border-left-color:var(--lacquer); }
+  .score-card .finish{ font-size:14px; font-weight:600; color:var(--ink); }
+  .score-card .finish small{ display:block; font-weight:400; color:var(--ink-soft); font-size:12px; margin-top:2px; }
+  .score-card .levels{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:22px;
+    color:var(--jade);
+    white-space:nowrap;
+  }
+  .score-card .levels span{ font-size:12px; font-family:'Public Sans'; font-weight:500; color:var(--ink-soft); }
+
+  .callout{
+    background:var(--jade-pale);
+    border-radius:10px;
+    padding:14px 16px;
+    font-size:14px;
+    line-height:1.55;
+    color:var(--ink);
+    margin-bottom:18px;
+  }
+  .callout b{ color:var(--jade); }
+
+  footer{
+    text-align:center;
+    padding:36px 20px 10px;
+    color:var(--ink-soft);
+    font-size:12.5px;
+  }
+
+  @media (min-width:520px){
+    .score-grid{ grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">掼蛋 · Partnership Card Game</div>
+  <h1>Guandan<span>A clear reference for the rules</span></h1>
+  <p class="dek">Two decks, four players, two partnerships — race your team from level 2 to Ace by finishing hands first.</p>
+</header>
+
+<nav class="tabs" id="tabs">
+  <a href="#overview" class="active">Overview</a>
+  <a href="#ranking">Ranking</a>
+  <a href="#combos">Combos</a>
+  <a href="#tribute">Tribute</a>
+  <a href="#play">Playing</a>
+  <a href="#scoring">Scoring</a>
+</nav>
+
+<main>
+
+  <section id="overview">
+    <div class="section-tag">01 — Setup</div>
+    <h2>Overview</h2>
+    <p class="intro">Guandan ("throwing eggs") is played by four people in two fixed partnerships, partners seated across from one another. The whole deck is dealt out, and the aim is simple: empty your hand before your opponents do.</p>
+
+    <div class="card">
+      <h3>Players & Teams</h3>
+      <p>4 players, 2 teams of 2. Partners sit opposite each other at the table.</p>
+    </div>
+    <div class="card">
+      <h3>The Deck</h3>
+      <p>Two standard 54-card decks (with jokers) combined — 108 cards total, dealt entirely so each player holds 27.</p>
+    </div>
+    <div class="card">
+      <h3>The Goal</h3>
+      <p>Be the first team to climb every level, from 2 up to Ace, and then win the deciding hand at Ace level.</p>
+    </div>
+  </section>
+
+  <section id="ranking">
+    <div class="section-tag">02 — Card Ranking</div>
+    <h2>Ranking & the Level Card</h2>
+    <p class="intro">Cards mostly rank in standard order, but each hand has one wild rank — your team's current level — and the jokers always sit on top.</p>
+
+    <div class="track-wrap">
+      <div class="track-label">Rank order, low → high</div>
+      <div class="track">
+        <div class="tile">2</div>
+        <div class="tile">3</div>
+        <div class="tile">4</div>
+        <div class="tile wild">5</div>
+        <div class="tile">6</div>
+        <div class="tile">7</div>
+        <div class="tile">8</div>
+        <div class="tile">9</div>
+        <div class="tile">10</div>
+        <div class="tile">J</div>
+        <div class="tile">Q</div>
+        <div class="tile">K</div>
+        <div class="tile">A</div>
+        <div class="tile joker">Small<br>Joker</div>
+        <div class="tile joker">Big<br>Joker</div>
+      </div>
+      <div class="track-note"><b>The level card</b> is whatever rank your team is currently on — shown here as 5. Every hand, all four copies of that rank become wild, ranking just under the jokers. As your team advances, the wild rank moves up the track.</div>
+    </div>
+
+    <div class="callout"><b>Jokers</b> are always the two highest cards in the game — Small Joker, then Big Joker above it — regardless of level.</div>
+  </section>
+
+  <section id="combos">
+    <div class="section-tag">03 — Legal Plays</div>
+    <h2>Combinations</h2>
+    <p class="intro">Every play must be one of these shapes. To beat the previous play, you need a higher combo of the <i>same</i> shape — except bombs, which can land on anything.</p>
+
+    <table class="combos">
+      <tr><th>Combo</th><th>Description</th><th>Example</th></tr>
+      <tr><td>Single</td><td>One card</td><td class="example">9</td></tr>
+      <tr><td>Pair</td><td>Two of the same rank</td><td class="example">9-9</td></tr>
+      <tr><td>Triple</td><td>Three of the same rank</td><td class="example">9-9-9</td></tr>
+      <tr><td>Full House</td><td>Triple + pair</td><td class="example">9-9-9-3-3</td></tr>
+      <tr><td>Straight</td><td>5 or more consecutive singles</td><td class="example">5-6-7-8-9</td></tr>
+      <tr><td>Tube</td><td>3 or more consecutive pairs</td><td class="example">5-5-6-6-7-7</td></tr>
+      <tr><td>Plate</td><td>2 or more consecutive triples</td><td class="example">5-5-5-6-6-6</td></tr>
+      <tr class="bomb-row"><td>Bomb<span class="bomb-badge">Beats all</span></td><td>4 or more of the same rank</td><td class="example">9-9-9-9</td></tr>
+      <tr class="bomb-row"><td>Joker Bomb<span class="bomb-badge">Highest</span></td><td>Both jokers from both decks</td><td class="example">🃏🃏🃏🃏</td></tr>
+    </table>
+
+    <div class="callout">A <b>bomb</b> can be played on top of any combo, of any shape, at any time — it's the one way to break another player's control of a trick. Bigger bombs beat smaller bombs, and the joker bomb beats everything.</div>
+  </section>
+
+  <section id="tribute">
+    <div class="section-tag">04 — Before the Hand</div>
+    <h2>Tribute</h2>
+    <p class="intro">How the previous hand ended decides who owes tribute before the next one begins.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="num">1</div>
+        <div class="body"><h3>Double-down finish</h3><p>If one team's players finished 1st and 2nd, both losing players must each hand over their single highest card to the winning team.</p></div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="num">2</div>
+        <div class="body"><h3>Return cards</h3><p>In exchange, the winning players give back their lowest non-wild cards, so nobody loses cards on net.</p></div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="num">3</div>
+        <div class="body"><h3>Anti-tribute</h3><p>If the two losing players together hold both jokers, they may refuse to pay tribute at all.</p></div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="num">4</div>
+        <div class="body"><h3>Who leads</h3><p>Whoever owes the largest tribute typically leads the first trick of the new hand.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="play">
+    <div class="section-tag">05 — During the Hand</div>
+    <h2>Playing a Hand</h2>
+    <p class="intro">Play moves around the table in turns, each player either beating the last combo or passing.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="num">1</div>
+        <div class="body"><h3>Lead</h3><p>The designated player opens the trick with any legal combo.</p></div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="num">2</div>
+        <div class="body"><h3>Respond</h3><p>Each player in turn plays a higher combo of the same shape, drops a bomb, or passes.</p></div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="num">3</div>
+        <div class="body"><h3>Trick ends</h3><p>Once everyone else passes, the last player to have played wins the trick and leads the next one, with any combo they choose.</p></div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="num">4</div>
+        <div class="body"><h3>Finishing</h3><p>A player who empties their hand locks in their finish position and sits out for the rest of the hand.</p></div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="num">5</div>
+        <div class="body"><h3>Hand ends</h3><p>Once three players have finished, the fourth is automatically last place and the hand is over.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="scoring">
+    <div class="section-tag">06 — Advancing</div>
+    <h2>Scoring & Levels</h2>
+    <p class="intro">Your team's level gain depends entirely on where <i>your two players</i> land in the finishing order.</p>
+
+    <div class="score-grid">
+      <div class="score-card top">
+        <div class="finish">1st + 2nd<small>Double down</small></div>
+        <div class="levels">+3 <span>levels</span></div>
+      </div>
+      <div class="score-card">
+        <div class="finish">1st + 3rd<small>Standard win</small></div>
+        <div class="levels">+2 <span>levels</span></div>
+      </div>
+      <div class="score-card">
+        <div class="finish">1st + 4th<small>Narrow win</small></div>
+        <div class="levels">+1 <span>level</span></div>
+      </div>
+    </div>
+
+    <div class="callout">The first team to reach <b>Ace level</b> and win that final hand wins the entire game.</div>
+  </section>
+
+</main>
+
+<footer>Guandan Rules Reference · for quick lookup at the table</footer>
+
+<script>
+  // Scroll-spy for the sticky tab nav
+  const sections = document.querySelectorAll('main section');
+  const links = document.querySelectorAll('nav.tabs a');
+
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        links.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+        const activeLink = document.querySelector('nav.tabs a.active');
+        if (activeLink) {
+          activeLink.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(s => spy.observe(s));
+</script>
+
+</body>
+</html>
