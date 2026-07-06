@@ -372,6 +372,107 @@
   }
   .callout b{ color:var(--jade); }
 
+  /* ---------- Game Tracker ---------- */
+  .tracker-card{
+    background:var(--ivory-card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px 16px 6px;
+    box-shadow:var(--shadow);
+    margin-bottom:16px;
+  }
+  .tracker-card.hand-card{
+    border:1px solid var(--brass);
+    background:linear-gradient(180deg, var(--brass-pale) 0%, var(--ivory-card) 60%);
+  }
+  .tracker-card-title{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .team-name-input{
+    display:block;
+    width:100%;
+    border:none;
+    border-bottom:2px solid var(--brass);
+    background:transparent;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:20px;
+    color:var(--jade);
+    padding:2px 2px 8px;
+    margin-bottom:10px;
+  }
+  .team-name-input:focus{ outline:none; border-bottom-color:var(--lacquer); }
+
+  .tracker-card .track-wrap{ margin:4px 0 12px; padding:14px 4px 14px; }
+  .tracker-card .tile{ cursor:pointer; transition:transform 0.12s ease; }
+  .tracker-card .tile:active{ transform:scale(0.93); }
+  .tracker-card .tile.active{
+    background:var(--lacquer);
+    color:#fff;
+    border-bottom-color:#6e1811;
+    box-shadow:0 0 0 2px var(--brass), 0 2px 6px rgba(0,0,0,0.3);
+    transform:scale(1.06);
+  }
+
+  .stepper{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    padding-bottom:14px;
+  }
+  .step-btn{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:none;
+    background:var(--jade);
+    color:#fff;
+    font-family:'JetBrains Mono', monospace;
+    font-size:18px;
+    font-weight:600;
+    line-height:1;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+  }
+  .step-btn:disabled{ opacity:0.35; cursor:not-allowed; }
+  .step-current{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:24px;
+    color:var(--jade);
+    min-width:44px;
+    text-align:center;
+  }
+
+  .tracker-actions{
+    display:flex;
+    justify-content:center;
+    margin:4px 0 22px;
+  }
+  .reset-btn{
+    background:none;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    font-family:'Public Sans', sans-serif;
+    font-size:13px;
+    font-weight:600;
+    padding:9px 16px;
+    border-radius:999px;
+    cursor:pointer;
+  }
+  .reset-btn:active{ background:var(--jade-pale); }
+  .save-hint{
+    text-align:center;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin:-8px 0 20px;
+  }
+
   footer{
     text-align:center;
     padding:36px 20px 10px;
@@ -393,7 +494,8 @@
 </header>
 
 <nav class="tabs" id="tabs">
-  <a href="#overview" class="active">Overview</a>
+  <a href="#tracker" class="active">Tracker</a>
+  <a href="#overview">Overview</a>
   <a href="#ranking">Ranking</a>
   <a href="#combos">Combos</a>
   <a href="#tribute">Tribute</a>
@@ -402,6 +504,55 @@
 </nav>
 
 <main>
+
+  <section id="tracker">
+    <div class="section-tag">00 — Live State</div>
+    <h2>Game Tracker</h2>
+    <p class="intro">Name your teams and track where everyone stands. Tap a tile to jump straight to a level, or use the +/- buttons. Saved automatically on this device.</p>
+
+    <div class="tracker-card" id="cardTeamA">
+      <input class="team-name-input" id="teamAName" maxlength="24" value="Team A" autocomplete="off">
+      <div class="track-wrap">
+        <div class="track-label">Current Level</div>
+        <div class="track" id="teamATrack"></div>
+      </div>
+      <div class="stepper">
+        <button class="step-btn" id="teamAMinus" aria-label="Decrease level">–</button>
+        <div class="step-current" id="teamALabel">2</div>
+        <button class="step-btn" id="teamAPlus" aria-label="Increase level">+</button>
+      </div>
+    </div>
+
+    <div class="tracker-card" id="cardTeamB">
+      <input class="team-name-input" id="teamBName" maxlength="24" value="Team B" autocomplete="off">
+      <div class="track-wrap">
+        <div class="track-label">Current Level</div>
+        <div class="track" id="teamBTrack"></div>
+      </div>
+      <div class="stepper">
+        <button class="step-btn" id="teamBMinus" aria-label="Decrease level">–</button>
+        <div class="step-current" id="teamBLabel">2</div>
+        <button class="step-btn" id="teamBPlus" aria-label="Increase level">+</button>
+      </div>
+    </div>
+
+    <div class="tracker-card hand-card">
+      <div class="tracker-card-title">This Hand Is Being Played At</div>
+      <div class="track-wrap">
+        <div class="track" id="handTrack"></div>
+      </div>
+      <div class="stepper">
+        <button class="step-btn" id="handMinus" aria-label="Decrease hand level">–</button>
+        <div class="step-current" id="handLabel">2</div>
+        <button class="step-btn" id="handPlus" aria-label="Increase hand level">+</button>
+      </div>
+    </div>
+
+    <div class="tracker-actions">
+      <button class="reset-btn" id="resetTracker">Reset Tracker</button>
+    </div>
+    <div class="save-hint">Saved locally in this browser</div>
+  </section>
 
   <section id="overview">
     <div class="section-tag">01 — Setup</div>
@@ -582,6 +733,107 @@
   }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
 
   sections.forEach(s => spy.observe(s));
+
+  // ---------- Game Tracker ----------
+  const LEVELS = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+  const STORAGE_KEY = 'guandan-tracker-v1';
+
+  const defaultState = {
+    teamAName: 'Team A',
+    teamBName: 'Team B',
+    teamALevel: 0,
+    teamBLevel: 0,
+    handLevel: 0
+  };
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return { ...defaultState };
+      const parsed = JSON.parse(raw);
+      return { ...defaultState, ...parsed };
+    } catch (e) {
+      return { ...defaultState };
+    }
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) { /* storage unavailable, ignore */ }
+  }
+
+  let state = loadState();
+
+  function buildTrack(trackEl, getLevel, setLevel) {
+    trackEl.innerHTML = '';
+    LEVELS.forEach((label, idx) => {
+      const tile = document.createElement('div');
+      tile.className = 'tile' + (idx === getLevel() ? ' active' : '');
+      tile.textContent = label;
+      tile.addEventListener('click', () => {
+        setLevel(idx);
+        renderAll();
+      });
+      trackEl.appendChild(tile);
+    });
+    const activeTile = trackEl.querySelector('.tile.active');
+    if (activeTile) activeTile.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+
+  function renderAll() {
+    document.getElementById('teamAName').value = state.teamAName;
+    document.getElementById('teamBName').value = state.teamBName;
+
+    document.getElementById('teamALabel').textContent = LEVELS[state.teamALevel];
+    document.getElementById('teamBLabel').textContent = LEVELS[state.teamBLevel];
+    document.getElementById('handLabel').textContent = LEVELS[state.handLevel];
+
+    buildTrack(document.getElementById('teamATrack'), () => state.teamALevel, (v) => { state.teamALevel = v; saveState(); });
+    buildTrack(document.getElementById('teamBTrack'), () => state.teamBLevel, (v) => { state.teamBLevel = v; saveState(); });
+    buildTrack(document.getElementById('handTrack'), () => state.handLevel, (v) => { state.handLevel = v; saveState(); });
+
+    document.getElementById('teamAMinus').disabled = state.teamALevel <= 0;
+    document.getElementById('teamAPlus').disabled = state.teamALevel >= LEVELS.length - 1;
+    document.getElementById('teamBMinus').disabled = state.teamBLevel <= 0;
+    document.getElementById('teamBPlus').disabled = state.teamBLevel >= LEVELS.length - 1;
+    document.getElementById('handMinus').disabled = state.handLevel <= 0;
+    document.getElementById('handPlus').disabled = state.handLevel >= LEVELS.length - 1;
+
+    saveState();
+  }
+
+  function step(key, delta) {
+    const next = state[key] + delta;
+    if (next < 0 || next > LEVELS.length - 1) return;
+    state[key] = next;
+    renderAll();
+  }
+
+  document.getElementById('teamAMinus').addEventListener('click', () => step('teamALevel', -1));
+  document.getElementById('teamAPlus').addEventListener('click', () => step('teamALevel', 1));
+  document.getElementById('teamBMinus').addEventListener('click', () => step('teamBLevel', -1));
+  document.getElementById('teamBPlus').addEventListener('click', () => step('teamBLevel', 1));
+  document.getElementById('handMinus').addEventListener('click', () => step('handLevel', -1));
+  document.getElementById('handPlus').addEventListener('click', () => step('handLevel', 1));
+
+  document.getElementById('teamAName').addEventListener('input', (e) => {
+    state.teamAName = e.target.value || 'Team A';
+    saveState();
+  });
+  document.getElementById('teamBName').addEventListener('input', (e) => {
+    state.teamBName = e.target.value || 'Team B';
+    saveState();
+  });
+
+  document.getElementById('resetTracker').addEventListener('click', () => {
+    if (confirm('Reset team names and levels back to the start?')) {
+      state = { ...defaultState };
+      renderAll();
+    }
+  });
+
+  renderAll();
 </script>
 
 </body>
