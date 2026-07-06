@@ -583,7 +583,7 @@
     <section id="ranking">
       <div class="section-tag" data-i18n="tag-ranking">02 — Card Ranking</div>
       <h2 data-i18n="h2-ranking">Ranking & the Level Card</h2>
-      <p class="intro" data-i18n="intro-ranking">Cards mostly rank in standard order, but each hand has one wild rank — your team's current level — and the jokers always sit on top.</p>
+      <p class="intro" data-i18n="intro-ranking">Cards mostly rank in standard order, but each hand has one special rank — your team's current level — and the jokers always sit on top.</p>
 
       <div class="track-wrap">
         <div class="track-label" data-i18n="ranking-track-label">Rank order, low → high</div>
@@ -604,10 +604,10 @@
           <div class="tile joker" data-i18n="tile-small-joker">Small<br>Joker</div>
           <div class="tile joker" data-i18n="tile-big-joker">Big<br>Joker</div>
         </div>
-        <div class="track-note" data-i18n="ranking-track-note"><b>The level card</b> is whatever rank your team is currently on — shown here as 5. Every hand, all copies of that rank become wild: they rank just under the jokers, and slot into their natural numeric position within straights, tubes, or plates. As your team advances, the wild rank moves up the track.</div>
+        <div class="track-note" data-i18n="ranking-track-note"><b>The level card</b> is whatever rank your team is currently on — shown here as 5. Every hand, all copies of that rank rank just under the jokers, and can also slot into their natural numeric position within straights, tubes, or plates. As your team advances, the level card moves up the track.</div>
       </div>
 
-      <div class="callout" data-i18n="ranking-hearts-callout"><b>The Hearts copy is the true wildcard.</b> Of the copies of the level card, the one in Hearts (♥) can stand in for any card, of any rank or suit, to complete whatever hand you're building — the only cards it can't imitate are the two jokers.</div>
+      <div class="callout" data-i18n="ranking-hearts-callout"><b>Only the Hearts copy is truly wild.</b> The other three suits are simply the level card, following the rule above. But the copy in Hearts (♥) is different — it can stand in for any card, of any rank or suit, to complete whatever hand you're building. The only cards it can't imitate are the two jokers.</div>
 
       <div class="callout" data-i18n="ranking-callout"><b>Jokers</b> are always the two highest cards in the game — Small Joker, then Big Joker above it — regardless of level.</div>
     </section>
@@ -718,6 +718,8 @@
       </div>
 
       <div class="callout" data-i18n="scoring-callout">The first team to reach <b>Ace level</b> and win that final hand wins the entire game.</div>
+
+      <div class="callout" data-i18n="scoring-ace-callout"><b>Clearing Ace is different.</b> To actually win the game by clearing Ace level, your team must finish 1st + 2nd or 1st + 3rd. A 1st + 4th finish does not clear Ace — your team stays at Ace level and plays again.</div>
     </section>
 
   </div>
@@ -843,12 +845,12 @@
 
     'tag-ranking': '02 — 牌序',
     'h2-ranking': '牌序与级牌',
-    'intro-ranking': '牌的大小基本按常规顺序排列,但每局都有一个百搭的等级——也就是你所在队伍当前的级数——大小王则始终排在最顶端。',
+    'intro-ranking': '牌的大小基本按常规顺序排列,但每局都有一个特殊的等级——也就是你所在队伍当前的级数——大小王则始终排在最顶端。',
     'ranking-track-label': '牌序,从小到大',
     'tile-small-joker': '小王',
     'tile-big-joker': '大王',
-    'ranking-track-note': '<b>级牌</b>就是你的队伍当前所在的级数——此处以5为例。每一局中,该点数的所有牌都成为百搭牌:大小仅次于大小王,并可按其点数嵌入顺子、连对或钢板中的相应位置。随着队伍升级,百搭的点数也会随之提升。',
-    'ranking-hearts-callout': '<b>红心级牌才是真正的百搭。</b>在所有级牌中,红心(♥)花色的那一张可以代替任意点数、任意花色的牌,拼成你想要的任何牌型——唯一不能替代的只有大小王。',
+    'ranking-track-note': '<b>级牌</b>就是你的队伍当前所在的级数——此处以5为例。每一局中,该点数的所有牌大小都仅次于大小王,并可按其点数嵌入顺子、连对或钢板中的相应位置。随着队伍升级,级牌也会随之提升。',
+    'ranking-hearts-callout': '<b>只有红心那一张才是真正的百搭牌。</b>其余三种花色都只是普通的级牌,按上述规则使用。但红心(♥)花色的那一张不同——它可以代替任意点数、任意花色的牌,拼成你想要的任何牌型。唯一不能替代的只有大小王。',
     'ranking-callout': '<b>大小王</b>永远是场上最大的两张牌——小王大于普通牌,大王又大于小王——无论当前是几级都是如此。',
 
     'tag-combos': '03 — 合法牌型',
@@ -922,6 +924,7 @@
     'score3-sub': '险胜',
     'score3-levels': '+1 <span>级</span>',
     'scoring-callout': '率先达到<b>A级</b>并赢下那关键一局的队伍,即赢得整场比赛。',
+    'scoring-ace-callout': '<b>过A有所不同。</b>要真正靠打过A级赢得整场比赛,你的队伍必须获得第一+第二,或第一+第三名。第一+第四名不算过A——你的队伍将停留在A级,需要再打一局。',
 
     'tag-tracker': '00 — 实时状态',
     'h2-tracker': '游戏计分板',
