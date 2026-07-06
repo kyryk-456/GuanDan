@@ -552,6 +552,7 @@
 
   <nav class="tabs" id="tabs">
     <a href="#overview" class="active" data-i18n="tab-overview">Overview</a>
+    <a href="#dealing" data-i18n="tab-dealing">Dealing</a>
     <a href="#ranking" data-i18n="tab-ranking">Ranking</a>
     <a href="#combos" data-i18n="tab-combos">Combos</a>
     <a href="#tribute" data-i18n="tab-tribute">Tribute</a>
@@ -580,8 +581,46 @@
       </div>
     </section>
 
+    <section id="dealing">
+      <div class="section-tag" data-i18n="tag-dealing">02 — Dealing & Seating</div>
+      <h2 data-i18n="h2-dealing">Dealing & Seating</h2>
+      <p class="intro" data-i18n="intro-dealing">There's no single dealer — players draw for themselves, and seating duties rotate hand to hand based on who won and lost.</p>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="num">1</div>
+          <div class="body"><h3 data-i18n="deal-step1-h3">Draw, don't deal</h3><p data-i18n="deal-step1-p">Players draw their own cards one at a time, in turn, going counter-clockwise around the table, until the full 108-card deck is gone. Each player ends up with 27 cards.</p></div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step">
+          <div class="num">2</div>
+          <div class="body"><h3 data-i18n="deal-step2-h3">Direction</h3><p data-i18n="deal-step2-p">Both drawing and playing go counter-clockwise around the table for the entire game.</p></div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step">
+          <div class="num">3</div>
+          <div class="body"><h3 data-i18n="deal-step3-h3">Very first hand</h3><p data-i18n="deal-step3-p">One player shuffles, another cuts and flips a card. Counting counter-clockwise by that card's rank finds who draws first; whoever draws the matching flipped card leads the first trick.</p></div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step">
+          <div class="num">4</div>
+          <div class="body"><h3 data-i18n="deal-step4-h3">Every hand after</h3><p data-i18n="deal-step4-p">Seating duties rotate with the result: the seat upstream of the previous winner shuffles, the winner cuts, and the previous loser draws first — unless the win was a double-down, in which case the winner's neighbor to the right draws first instead.</p></div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step">
+          <div class="num">5</div>
+          <div class="body"><h3 data-i18n="deal-step5-h3">Who leads the trick</h3><p data-i18n="deal-step5-p">Whoever owes tribute normally leads the first trick of the new hand — unless the losing side avoided tribute by holding both jokers, in which case the winning side leads instead.</p></div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step">
+          <div class="num">6</div>
+          <div class="body"><h3 data-i18n="deal-step6-h3">Welcome back</h3><p data-i18n="deal-step6-p">If a player empties their hand on the winning play of a trick, they obviously can't lead the next one — so the lead passes to their partner instead.</p></div>
+        </div>
+      </div>
+    </section>
+
     <section id="ranking">
-      <div class="section-tag" data-i18n="tag-ranking">02 — Card Ranking</div>
+      <div class="section-tag" data-i18n="tag-ranking">03 — Card Ranking</div>
       <h2 data-i18n="h2-ranking">Ranking & the Level Card</h2>
       <p class="intro" data-i18n="intro-ranking">Cards mostly rank in standard order, but each hand has one special rank — your team's current level — and the jokers always sit on top.</p>
 
@@ -613,7 +652,7 @@
     </section>
 
     <section id="combos">
-      <div class="section-tag" data-i18n="tag-combos">03 — Legal Plays</div>
+      <div class="section-tag" data-i18n="tag-combos">04 — Legal Plays</div>
       <h2 data-i18n="h2-combos">Combinations</h2>
       <p class="intro" data-i18n="intro-combos">Every play must be one of these shapes. To beat the previous play, you need a higher combo of the <i>same</i> shape — except bombs, which can land on anything.</p>
 
@@ -637,7 +676,7 @@
     </section>
 
     <section id="tribute">
-      <div class="section-tag" data-i18n="tag-tribute">04 — Before the Hand</div>
+      <div class="section-tag" data-i18n="tag-tribute">05 — Before the Hand</div>
       <h2 data-i18n="h2-tribute">Tribute</h2>
       <p class="intro" data-i18n="intro-tribute">How the previous hand ended decides who owes tribute before the next one begins.</p>
 
@@ -665,7 +704,7 @@
     </section>
 
     <section id="play">
-      <div class="section-tag" data-i18n="tag-play">05 — During the Hand</div>
+      <div class="section-tag" data-i18n="tag-play">06 — During the Hand</div>
       <h2 data-i18n="h2-play">Playing a Hand</h2>
       <p class="intro" data-i18n="intro-play">Play moves around the table in turns, each player either beating the last combo or passing.</p>
 
@@ -698,7 +737,7 @@
     </section>
 
     <section id="scoring">
-      <div class="section-tag" data-i18n="tag-scoring">06 — Advancing</div>
+      <div class="section-tag" data-i18n="tag-scoring">07 — Advancing</div>
       <h2 data-i18n="h2-scoring">Scoring & Levels</h2>
       <p class="intro" data-i18n="intro-scoring">Your team's level gain depends entirely on where <i>your two players</i> land in the finishing order.</p>
 
@@ -827,6 +866,7 @@
     'nav-tracker': '计分板',
 
     'tab-overview': '概述',
+    'tab-dealing': '发牌',
     'tab-ranking': '牌序',
     'tab-combos': '牌型',
     'tab-tribute': '进贡',
@@ -843,7 +883,23 @@
     'card3-h3': '目标',
     'card3-p': '率先带领团队从2级一路升到A级,并在A级的关键一局中获胜,即可赢得整场比赛。',
 
-    'tag-ranking': '02 — 牌序',
+    'tag-dealing': '02 — 发牌与座位',
+    'h2-dealing': '发牌与座位',
+    'intro-dealing': '掼蛋没有固定的发牌人——玩家自己抓牌,而洗牌、切牌等座位职责会随每一局的输赢结果而轮换。',
+    'deal-step1-h3': '自己抓牌,而非发牌',
+    'deal-step1-p': '玩家依次自行抓牌,每次一张,按逆时针方向绕桌进行,直至108张牌全部抓完。每位玩家最终持有27张牌。',
+    'deal-step2-h3': '方向',
+    'deal-step2-p': '整局游戏中,抓牌和出牌都按逆时针方向绕桌进行。',
+    'deal-step3-h3': '第一局牌',
+    'deal-step3-p': '由一人洗牌,另一人切牌并翻出一张牌。从翻出的牌点开始按逆时针方向数数,确定首位抓牌者;抓到与翻牌点数相同的那张牌的人,则获得首圈领出牌权。',
+    'deal-step4-h3': '此后的每一局',
+    'deal-step4-p': '座位职责随上一局结果轮换:上一局赢家上家负责洗牌,赢家切牌,上一局输家首先抓牌——但如果上一局是双下,则改由赢家右侧的邻座首先抓牌。',
+    'deal-step5-h3': '谁先出牌',
+    'deal-step5-p': '通常由需要进贡的一方在新一局中率先出牌——但如果输方凭借手握大小王而免于进贡(抗贡),则改由赢方先出牌。',
+    'deal-step6-h3': '接风',
+    'deal-step6-p': '如果某位玩家打出制胜的一手牌后手中已无牌,他显然无法领出下一圈牌——此时出牌权将转交给他的同伴。',
+
+    'tag-ranking': '03 — 牌序',
     'h2-ranking': '牌序与级牌',
     'intro-ranking': '牌的大小基本按常规顺序排列,但每局都有一个特殊的等级——也就是你所在队伍当前的级数——大小王则始终排在最顶端。',
     'ranking-track-label': '牌序,从小到大',
@@ -853,7 +909,7 @@
     'ranking-hearts-callout': '<b>只有红心那一张才是真正的百搭牌。</b>其余三种花色都只是普通的级牌,按上述规则使用。但红心(♥)花色的那一张不同——它可以代替任意点数、任意花色的牌,拼成你想要的任何牌型。唯一不能替代的只有大小王。',
     'ranking-callout': '<b>大小王</b>永远是场上最大的两张牌——小王大于普通牌,大王又大于小王——无论当前是几级都是如此。',
 
-    'tag-combos': '03 — 合法牌型',
+    'tag-combos': '04 — 合法牌型',
     'h2-combos': '牌型',
     'intro-combos': '每次出牌都必须符合以下某种牌型。要压过上家,你需要出<i>同种牌型</i>中更大的牌——炸弹除外,炸弹可以压制任何牌型。',
     'th-combo': '牌型',
@@ -885,7 +941,7 @@
     'combos-callout': '<b>炸弹</b>可以在任何时候压过任意牌型的牌——这是打破对方控场的唯一方式。更大的炸弹可以压过更小的炸弹,而王炸可以压过所有牌。',
     'combos-flush-callout': '<b>同花顺的位置:</b>它能压过4张或5张的普通炸弹,但6张及以上的炸弹能压过它。完整顺序,从小到大:4张炸弹 → 5张炸弹 → 同花顺 → 6张及以上炸弹 → 王炸。',
 
-    'tag-tribute': '04 — 局前流程',
+    'tag-tribute': '05 — 局前流程',
     'h2-tribute': '进贡',
     'intro-tribute': '上一局的结束方式,决定了下一局开始前谁需要进贡。',
     'trib-step1-h3': '双下',
@@ -897,7 +953,7 @@
     'trib-step4-h3': '谁先出牌',
     'trib-step4-p': '通常由进贡最大的一方,在新一局中率先出牌。',
 
-    'tag-play': '05 — 出牌过程',
+    'tag-play': '06 — 出牌过程',
     'h2-play': '出牌流程',
     'intro-play': '出牌按顺序绕桌进行,每位玩家要么出牌压过上家,要么选择过牌。',
     'play-step1-h3': '首出',
@@ -911,7 +967,7 @@
     'play-step5-h3': '本局结束',
     'play-step5-p': '当三位玩家都已出完牌,第四位玩家自动成为末游,本局结束。',
 
-    'tag-scoring': '06 — 升级规则',
+    'tag-scoring': '07 — 升级规则',
     'h2-scoring': '计分与升级',
     'intro-scoring': '你的队伍能升多少级,完全取决于<i>你们两人</i>的名次组合。',
     'score1-finish': '第一 + 第二',
