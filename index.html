@@ -60,9 +60,14 @@
       radial-gradient(120% 140% at 15% -10%, rgba(184,147,62,0.35), transparent 55%),
       linear-gradient(160deg, var(--jade) 0%, #163B31 100%);
     color:var(--ivory-card);
-    padding:calc(env(safe-area-inset-top, 0px) + 28px) 22px 34px;
+    padding:calc(env(safe-area-inset-top, 0px) + 28px) 0 34px;
     position:relative;
     overflow:hidden;
+  }
+  .hero-inner{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 22px;
   }
   header.hero .eyebrow{
     font-family:'JetBrains Mono', monospace;
@@ -118,9 +123,13 @@
     position:sticky;
     top:0;
     z-index:50;
-    display:flex;
     background:var(--jade);
     box-shadow:0 4px 14px rgba(0,0,0,0.16);
+  }
+  .switch-inner{
+    display:flex;
+    max-width:640px;
+    margin:0 auto;
   }
   .page-switch button{
     flex:1;
@@ -151,6 +160,8 @@
     z-index:40;
     display:flex;
     gap:2px;
+    max-width:640px;
+    margin:0 auto;
     overflow-x:auto;
     background:var(--jade);
     padding:0 10px;
@@ -175,6 +186,13 @@
   }
 
   .content{ max-width:640px; margin:0 auto; padding:0 18px; }
+
+  /* ---------- Wider screens: let the shared column breathe a little more ---------- */
+  @media (min-width:900px){
+    .hero-inner, .switch-inner, nav.tabs, .content{ max-width:760px; }
+    header.hero{ padding-top:calc(env(safe-area-inset-top, 0px) + 40px); padding-bottom:44px; }
+    header.hero h1{ font-size:50px; }
+  }
 
   section{
     padding:34px 0 6px;
@@ -538,14 +556,18 @@
 
 <header class="hero">
   <button class="lang-toggle" id="langToggle">中文</button>
-  <div class="eyebrow" data-i18n="eyebrow">掼蛋 · Partnership Card Game</div>
-  <h1 data-i18n="title">Guandan</h1>
-  <p class="dek" data-i18n="dek">Two decks, four players, two partnerships — race your team from level 2 to Ace by finishing hands first.</p>
+  <div class="hero-inner">
+    <div class="eyebrow" data-i18n="eyebrow">掼蛋 · Partnership Card Game</div>
+    <h1 data-i18n="title">Guandan</h1>
+    <p class="dek" data-i18n="dek">Two decks, four players, two partnerships — race your team from level 2 to Ace by finishing hands first.</p>
+  </div>
 </header>
 
 <nav class="page-switch" id="pageSwitch">
-  <button class="page-btn active" data-page="rules" data-i18n="nav-rules">Rules</button>
-  <button class="page-btn" data-page="tracker" data-i18n="nav-tracker">Tracker</button>
+  <div class="switch-inner">
+    <button class="page-btn active" data-page="rules" data-i18n="nav-rules">Rules</button>
+    <button class="page-btn" data-page="tracker" data-i18n="nav-tracker">Tracker</button>
+  </div>
 </nav>
 
 <div id="page-rules" class="page active">
